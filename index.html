@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BS Finances — Simulador de Consórcio</title>
+  <meta name="description" content="Simule seu consórcio e compare com financiamento. Descubra quanto você economiza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- Background decorative -->
+  <div class="bg-decoration" aria-hidden="true">
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="BS Finances">
+        <img src="public/logo.png" alt="BS Finances" class="logo-img" />
+      </a>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        Simulador online
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-wrapper">
+    <!-- Progress bar -->
+    <div class="progress-wrapper" id="progressWrapper">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+      </div>
+      <div class="progress-steps">
+        <span class="step-label active" data-step="1">Categoria</span>
+        <span class="step-label" data-step="2">Valor</span>
+        <span class="step-label" data-step="3">Parcelas</span>
+        <span class="step-label" data-step="4">Cadastro</span>
+        <span class="step-label" data-step="5">Resultado</span>
+      </div>
+    </div>
+
+    <!-- Card container -->
+    <section class="quiz-card" id="quizCard">
+
+      <!-- STEP 1: Category -->
+      <div class="step active" data-step="1">
+        <div class="step-header">
+          <span class="eyebrow">Etapa 1 de 5</span>
+          <h1 class="step-title">O que você quer conquistar?</h1>
+          <p class="step-subtitle">Escolha o tipo de bem que deseja simular</p>
+        </div>
+
+        <div class="category-grid">
+          <button type="button" class="category-card" data-category="imovel">
+            <div class="cat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <span class="cat-name">Imóvel</span>
+            <span class="cat-desc">Casa, apto, terreno</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="veiculo">
+            <div class="cat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+                <circle cx="6.5" cy="16.5" r="2.5"/>
+                <circle cx="16.5" cy="16.5" r="2.5"/>
+              </svg>
+            </div>
+            <span class="cat-name">Veículo</span>
+            <span class="cat-desc">Carros, utilitários</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="moto">
+            <div class="cat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="5.5" cy="17.5" r="3.5"/>
+                <circle cx="18.5" cy="17.5" r="3.5"/>
+                <path d="M15 6h3l2 5M5 17h3l4-9 3 6-3 4"/>
+              </svg>
+            </div>
+            <span class="cat-name">Motos</span>
+            <span class="cat-desc">Todas as cilindradas</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="trator">
+            <div class="cat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="6" cy="17" r="4"/>
+                <circle cx="18" cy="17" r="3"/>
+                <path d="M3 17h-1v-5h6V7h6l3 5h4v5"/>
+                <path d="M9 7v5"/>
+              </svg>
+            </div>
+            <span class="cat-name">Trator</span>
+            <span class="cat-desc">Agronegócio</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="maquinas">
+            <div class="cat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <span class="cat-name">Máquinas</span>
+            <span class="cat-desc">Equipamentos pesados</span>
+          </button>
+
+          <div class="category-card category-info" aria-hidden="true">
+            <div class="cat-icon cat-icon-yellow">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="20" x2="12" y2="10"/>
+                <line x1="18" y1="20" x2="18" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="16"/>
+              </svg>
+            </div>
+            <span class="cat-name">Sem juros abusivos</span>
+            <span class="cat-desc">Compare e economize</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Credit value -->
+      <div class="step" data-step="2">
+        <div class="step-header">
+          <span class="eyebrow">Etapa 2 de 5</span>
+          <h1 class="step-title">Qual valor de crédito você precisa?</h1>
+          <p class="step-subtitle" id="creditCategoryHint">Use o slider ou digite o valor desejado</p>
+        </div>
+
+        <div class="credit-display">
+          <span class="credit-currency">R$</span>
+          <input type="text" id="creditValueDisplay" class="credit-value" value="100.000" inputmode="numeric" aria-label="Valor do crédito" />
+        </div>
+
+        <div class="slider-wrapper">
+          <input type="range" id="creditSlider" class="credit-slider" min="10000" max="2000000" step="5000" value="100000" aria-label="Slider de valor" />
+          <div class="slider-marks">
+            <span id="sliderMin">R$ 10 mil</span>
+            <span id="sliderMax">R$ 2 mi</span>
+          </div>
+        </div>
+
+        <div class="quick-amounts" id="quickAmounts">
+          <!-- Populated via JS -->
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" data-action="back">← Voltar</button>
+          <button type="button" class="btn btn-primary" data-action="next-2">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Installments -->
+      <div class="step" data-step="3">
+        <div class="step-header">
+          <span class="eyebrow">Etapa 3 de 5</span>
+          <h1 class="step-title">Em quantas parcelas?</h1>
+          <p class="step-subtitle">Escolha o prazo que melhor cabe no seu bolso</p>
+        </div>
+
+        <div class="installments-grid" id="installmentsGrid">
+          <!-- Populated via JS -->
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" data-action="back">← Voltar</button>
+          <button type="button" class="btn btn-primary" data-action="next-3">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Lead form -->
+      <div class="step" data-step="4">
+        <div class="step-header">
+          <span class="eyebrow">Etapa 4 de 5</span>
+          <h1 class="step-title">Quase lá! Receba sua simulação</h1>
+          <p class="step-subtitle">Preencha seus dados para liberar o resultado completo e o PDF</p>
+        </div>
+
+        <div class="lead-preview">
+          <div class="preview-row">
+            <span>Categoria</span>
+            <strong id="previewCategory">—</strong>
+          </div>
+          <div class="preview-row">
+            <span>Crédito</span>
+            <strong id="previewCredit">—</strong>
+          </div>
+          <div class="preview-row">
+            <span>Parcelas</span>
+            <strong id="previewInstallments">—</strong>
+          </div>
+        </div>
+
+        <form id="leadForm" class="lead-form" novalidate>
+          <div class="form-field">
+            <label for="leadName">Nome completo</label>
+            <input type="text" id="leadName" name="name" placeholder="Como devemos te chamar?" required autocomplete="name" />
+            <span class="error-text" id="errorName"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="leadPhone">Telefone / WhatsApp</label>
+            <input type="tel" id="leadPhone" name="phone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+            <span class="error-text" id="errorPhone"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="leadEmail">E-mail</label>
+            <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required autocomplete="email" />
+            <span class="error-text" id="errorEmail"></span>
+          </div>
+
+          <div class="form-consent">
+            <label class="consent-label">
+              <input type="checkbox" id="leadConsent" required />
+              <span>Aceito receber a simulação e contatos da BS Finances.</span>
+            </label>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost" data-action="back">← Voltar</button>
+            <button type="submit" class="btn btn-primary btn-cta" id="submitLead">
+              <span class="btn-label">Liberar minha simulação</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 5: Results -->
+      <div class="step" data-step="5">
+        <div class="step-header center">
+          <span class="eyebrow eyebrow-success">✓ Simulação pronta</span>
+          <h1 class="step-title">Olá, <span id="resultName">visitante</span>!</h1>
+          <p class="step-subtitle">Veja a comparação completa e quanto você pode economizar</p>
+        </div>
+
+        <div class="economy-banner">
+          <span class="economy-label">Sua economia ao escolher consórcio</span>
+          <span class="economy-value" id="economyValue">R$ 0,00</span>
+          <span class="economy-percent">Equivalente a <strong id="economyPercent">0%</strong> de rentabilidade</span>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comparison-card comparison-financiamento">
+            <div class="comp-header">
+              <span class="comp-tag">Financiamento</span>
+              <h3>Mais caro</h3>
+            </div>
+            <div class="comp-rows">
+              <div class="comp-row">
+                <span>Valor financiado</span>
+                <strong id="finPrincipal">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Parcela mensal</span>
+                <strong id="finParcela">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Taxa de juros (a.a.)</span>
+                <strong id="finJuros">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Total de juros pagos</span>
+                <strong class="text-danger" id="finTotalJuros">—</strong>
+              </div>
+              <div class="comp-row comp-total">
+                <span>Total pago</span>
+                <strong id="finTotal">—</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-card comparison-consorcio">
+            <div class="comp-header">
+              <span class="comp-tag comp-tag-best">★ Recomendado · Base BB Consórcio</span>
+              <h3>Consórcio</h3>
+            </div>
+            <div class="comp-rows">
+              <div class="comp-row">
+                <span>Carta de crédito</span>
+                <strong id="conPrincipal">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Parcela mensal</span>
+                <strong id="conParcela">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Taxa de administração</span>
+                <strong id="conTaxaAdm">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Fundo de reserva</span>
+                <strong id="conFundoReserva">—</strong>
+              </div>
+              <div class="comp-row">
+                <span>Custo total adicional</span>
+                <strong id="conTotalAdm">—</strong>
+              </div>
+              <div class="comp-row comp-total">
+                <span>Total pago</span>
+                <strong id="conTotal">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefits-row">
+          <div class="benefit-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Sem juros</span>
+          </div>
+          <div class="benefit-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Parcela menor</span>
+          </div>
+          <div class="benefit-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Lance livre</span>
+          </div>
+          <div class="benefit-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>FGTS aceito</span>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <p><strong>Observação:</strong> Valores sujeitos a taxas administrativas vigentes. Apenas simulação, para valor real consultar taxas vigentes. Cálculo baseado nas taxas públicas do <strong>BB Consórcio</strong> (Banco do Brasil).</p>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="btn btn-primary btn-large" id="downloadPdfBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Baixar PDF da simulação
+          </button>
+          <button type="button" class="btn btn-secondary btn-large" id="restartBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+            Nova simulação
+          </button>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-head">
+            <span class="eyebrow eyebrow-yellow">Fale conosco</span>
+            <h3>Tire suas dúvidas com um especialista</h3>
+          </div>
+          <div class="contact-links">
+            <a href="https://wa.me/5534999238855" target="_blank" rel="noopener" class="contact-link contact-whats">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 00-8.7 14.9L2 22l5.2-1.3A10 10 0 1012 2zm0 18.3c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3a8.3 8.3 0 1114.9-5 8.3 8.3 0 01-8.3 8.3z"/>
+              </svg>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>(34) 99923-8855</span>
+              </div>
+            </a>
+            <a href="https://instagram.com/bsfinances" target="_blank" rel="noopener" class="contact-link contact-insta">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+              <div>
+                <strong>Instagram</strong>
+                <span>@bsfinances</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="site-footer">
+      <p>© 2026 BS Finances. Simulação meramente ilustrativa.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
