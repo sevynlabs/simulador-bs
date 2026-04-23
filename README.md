@@ -46,6 +46,20 @@ python3 -m http.server 8888
 3. Implantar → Nova implantação → Aplicativo da Web (executar como você, acesso a qualquer pessoa)
 4. Cole a URL em `SHEETS_ENDPOINT` (linha ~10 de `script.js`)
 
+## Deploy (Coolify)
+
+O projeto inclui `Dockerfile` + `nginx.conf` prontos para build automático no Coolify.
+
+1. No Coolify: **+ New Resource → Public Repository** (ou **Private** se preferir via GitHub App)
+2. URL: `https://github.com/sevynlabs/simulador-bs`
+3. Branch: `main`
+4. Build Pack: **Dockerfile** (detecção automática)
+5. Port: `80`
+6. Domínio: aponte o DNS para o servidor e configure em **Domains**
+7. Deploy
+
+A cada push na `main`, o Coolify refaz o build automaticamente (se webhook estiver ativo).
+
 ## Contato
 
 - WhatsApp: (34) 99923-8855

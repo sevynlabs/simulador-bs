@@ -1,0 +1,12 @@
+.git
+.gitignore
+.DS_Store
+.claude
+.vscode
+.idea
+node_modules
+*.log
+README.md
+google-apps-script.js
+Dockerfile
+.dockerignore
