@@ -7,7 +7,7 @@
   <meta name="description" content="Simule seu consórcio e compare com financiamento. Descubra quanto você economiza." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -53,8 +53,8 @@
       <div class="step active" data-step="1">
         <div class="step-header">
           <span class="eyebrow">Etapa 1 de 5</span>
-          <h1 class="step-title">O que você quer conquistar?</h1>
-          <p class="step-subtitle">Escolha o tipo de bem que deseja simular</p>
+          <h1 class="step-title">O que você quer <em>conquistar</em>?</h1>
+          <p class="step-subtitle">Escolha o tipo de bem que deseja simular com inteligência financeira</p>
         </div>
 
         <div class="category-grid">
@@ -135,8 +135,8 @@
       <div class="step" data-step="2">
         <div class="step-header">
           <span class="eyebrow">Etapa 2 de 5</span>
-          <h1 class="step-title">Qual valor de crédito você precisa?</h1>
-          <p class="step-subtitle" id="creditCategoryHint">Use o slider ou digite o valor desejado</p>
+          <h1 class="step-title">Qual o valor do seu <em>sonho</em>?</h1>
+          <p class="step-subtitle" id="creditCategoryHint">Use o slider ou digite o valor desejado da carta de crédito</p>
         </div>
 
         <div class="credit-display">
@@ -166,8 +166,8 @@
       <div class="step" data-step="3">
         <div class="step-header">
           <span class="eyebrow">Etapa 3 de 5</span>
-          <h1 class="step-title">Em quantas parcelas?</h1>
-          <p class="step-subtitle">Escolha o prazo que melhor cabe no seu bolso</p>
+          <h1 class="step-title">Em quantas <em>parcelas</em>?</h1>
+          <p class="step-subtitle">Escolha o prazo que melhor se encaixa no seu planejamento</p>
         </div>
 
         <div class="installments-grid" id="installmentsGrid">
@@ -184,8 +184,8 @@
       <div class="step" data-step="4">
         <div class="step-header">
           <span class="eyebrow">Etapa 4 de 5</span>
-          <h1 class="step-title">Quase lá! Receba sua simulação</h1>
-          <p class="step-subtitle">Preencha seus dados para liberar o resultado completo e o PDF</p>
+          <h1 class="step-title">Falta pouco para sua <em>simulação</em></h1>
+          <p class="step-subtitle">Preencha seus dados para liberar o comparativo completo e o PDF detalhado</p>
         </div>
 
         <div class="lead-preview">
@@ -243,14 +243,14 @@
       <div class="step" data-step="5">
         <div class="step-header center">
           <span class="eyebrow eyebrow-success">✓ Simulação pronta</span>
-          <h1 class="step-title">Olá, <span id="resultName">visitante</span>!</h1>
-          <p class="step-subtitle">Veja a comparação completa e quanto você pode economizar</p>
+          <h1 class="step-title">Olá, <em id="resultName">visitante</em></h1>
+          <p class="step-subtitle">Veja a comparação completa e descubra exatamente quanto você economiza</p>
         </div>
 
         <div class="economy-banner">
-          <span class="economy-label">Sua economia ao escolher consórcio</span>
+          <span class="economy-label">Economia Estimada · Consórcio vs Financiamento</span>
           <span class="economy-value" id="economyValue">R$ 0,00</span>
-          <span class="economy-percent">Equivalente a <strong id="economyPercent">0%</strong> de rentabilidade</span>
+          <span class="economy-percent">Equivalente a <strong id="economyPercent">0%</strong> de rentabilidade anual</span>
         </div>
 
         <div class="comparison-grid">
@@ -319,19 +319,31 @@
 
         <div class="benefits-row">
           <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="5" x2="5" y2="19"/>
+              <circle cx="6.5" cy="6.5" r="2.5"/>
+              <circle cx="17.5" cy="17.5" r="2.5"/>
+            </svg>
             <span>Sem juros</span>
           </div>
           <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/>
+              <polyline points="16 17 22 17 22 11"/>
+            </svg>
             <span>Parcela menor</span>
           </div>
           <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 14.2l-4.78 2.51.91-5.32L4.27 7.62l5.34-.78L12 2z"/>
+            </svg>
             <span>Lance livre</span>
           </div>
           <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
             <span>FGTS aceito</span>
           </div>
         </div>
