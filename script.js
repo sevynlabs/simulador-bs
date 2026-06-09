@@ -255,7 +255,6 @@ function setupInstallmentsStep() {
   state.installments = null;
 
   cat.installmentOptions.forEach((months) => {
-    const consorcioParcela = (state.credit * (1 + cat.consortiumAdminTotal)) / months;
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'installment-card';
@@ -263,7 +262,6 @@ function setupInstallmentsStep() {
     card.innerHTML = `
       <span class="inst-months">${months}x</span>
       <span class="inst-label">${monthsToLabel(months)}</span>
-      <span class="inst-parcela">${formatBRL(consorcioParcela)}</span>
     `;
     card.addEventListener('click', () => {
       $$('.installment-card').forEach((c) => c.classList.remove('selected'));
