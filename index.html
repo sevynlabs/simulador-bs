@@ -263,11 +263,49 @@
           </div>
         </div>
 
-        <!-- Destaque da parcela -->
-        <div class="parcela-banner">
-          <span class="parcela-label">Parcela estimada do Consorcio</span>
-          <span class="parcela-value" id="conParcela">R$ 0,00</span>
-          <span class="parcela-hint">por mes</span>
+        <!-- Comparacao -->
+        <div class="comparison-grid">
+          <div class="comparison-card comparison-financiamento">
+            <div class="comp-header">
+              <span class="comp-tag">Financiamento</span>
+              <h3>Mais caro</h3>
+            </div>
+            <div class="comp-rows">
+              <div class="comp-row">
+                <span>Valor financiado</span>
+                <strong id="finPrincipal">-</strong>
+              </div>
+              <div class="comp-row">
+                <span>Parcela mensal</span>
+                <strong id="finParcela">-</strong>
+              </div>
+              <div class="comp-row comp-total">
+                <span>Total pago</span>
+                <strong id="finTotal">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-card comparison-consorcio">
+            <div class="comp-header">
+              <span class="comp-tag comp-tag-best">Recomendado</span>
+              <h3>Consorcio</h3>
+            </div>
+            <div class="comp-rows">
+              <div class="comp-row">
+                <span>Carta de credito</span>
+                <strong id="conPrincipal">-</strong>
+              </div>
+              <div class="comp-row">
+                <span>Parcela mensal</span>
+                <strong id="conParcela">-</strong>
+              </div>
+              <div class="comp-row comp-total">
+                <span>Total pago</span>
+                <strong id="conTotal">-</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="next-step-card">

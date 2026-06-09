@@ -434,8 +434,15 @@ function renderResults() {
   $('#resultCredit').textContent = formatBRL(r.principal);
   $('#resultMonths').textContent = `${r.months}x`;
 
-  // Parcela do consórcio (único valor exibido)
+  // Financiamento
+  $('#finPrincipal').textContent = formatBRL(r.principal);
+  $('#finParcela').textContent = formatBRL(r.finParcela);
+  $('#finTotal').textContent = formatBRL(r.finTotal);
+
+  // Consórcio
+  $('#conPrincipal').textContent = formatBRL(r.principal);
   $('#conParcela').textContent = formatBRL(r.conParcela);
+  $('#conTotal').textContent = formatBRL(r.conTotal);
 }
 
 // ----- Navigation buttons -----
