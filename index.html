@@ -242,110 +242,43 @@
       <!-- STEP 5: Results -->
       <div class="step" data-step="5">
         <div class="step-header center">
-          <span class="eyebrow eyebrow-success">✓ Simulação pronta</span>
-          <h1 class="step-title">Olá, <em id="resultName">visitante</em></h1>
-          <p class="step-subtitle">Veja a comparação completa e descubra exatamente quanto você economiza</p>
+          <span class="eyebrow eyebrow-success">Simulacao pronta</span>
+          <h1 class="step-title">Ola, <em id="resultName">visitante</em>!</h1>
+          <p class="step-subtitle">Confira o valor estimado da sua parcela</p>
         </div>
 
-        <div class="economy-banner">
-          <span class="economy-label">Economia Estimada · Consórcio vs Financiamento</span>
-          <span class="economy-value" id="economyValue">R$ 0,00</span>
-          <span class="economy-percent">Equivalente a <strong id="economyPercent">0%</strong> de rentabilidade anual</span>
-        </div>
-
-        <div class="comparison-grid">
-          <div class="comparison-card comparison-financiamento">
-            <div class="comp-header">
-              <span class="comp-tag">Financiamento</span>
-              <h3>Mais caro</h3>
-            </div>
-            <div class="comp-rows">
-              <div class="comp-row">
-                <span>Valor financiado</span>
-                <strong id="finPrincipal">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Parcela mensal</span>
-                <strong id="finParcela">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Taxa de juros (a.a.)</span>
-                <strong id="finJuros">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Total de juros pagos</span>
-                <strong class="text-danger" id="finTotalJuros">—</strong>
-              </div>
-              <div class="comp-row comp-total">
-                <span>Total pago</span>
-                <strong id="finTotal">—</strong>
-              </div>
-            </div>
+        <!-- Resumo da simulacao -->
+        <div class="result-summary">
+          <div class="summary-item">
+            <span class="summary-label">Categoria</span>
+            <strong id="resultCategory">-</strong>
           </div>
-
-          <div class="comparison-card comparison-consorcio">
-            <div class="comp-header">
-              <span class="comp-tag comp-tag-best">★ Recomendado · Base BB Consórcio</span>
-              <h3>Consórcio</h3>
-            </div>
-            <div class="comp-rows">
-              <div class="comp-row">
-                <span>Carta de crédito</span>
-                <strong id="conPrincipal">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Parcela mensal</span>
-                <strong id="conParcela">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Taxa de administração</span>
-                <strong id="conTaxaAdm">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Fundo de reserva</span>
-                <strong id="conFundoReserva">—</strong>
-              </div>
-              <div class="comp-row">
-                <span>Custo total adicional</span>
-                <strong id="conTotalAdm">—</strong>
-              </div>
-              <div class="comp-row comp-total">
-                <span>Total pago</span>
-                <strong id="conTotal">—</strong>
-              </div>
-            </div>
+          <div class="summary-item">
+            <span class="summary-label">Credito</span>
+            <strong id="resultCredit">-</strong>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Prazo</span>
+            <strong id="resultMonths">-</strong>
           </div>
         </div>
 
-        <div class="benefits-row">
-          <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="19" y1="5" x2="5" y2="19"/>
-              <circle cx="6.5" cy="6.5" r="2.5"/>
-              <circle cx="17.5" cy="17.5" r="2.5"/>
+        <!-- Destaque da parcela -->
+        <div class="parcela-banner">
+          <span class="parcela-label">Parcela estimada do Consorcio</span>
+          <span class="parcela-value" id="conParcela">R$ 0,00</span>
+          <span class="parcela-hint">por mes</span>
+        </div>
+
+        <div class="next-step-card">
+          <div class="next-step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
-            <span>Sem juros</span>
           </div>
-          <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/>
-              <polyline points="16 17 22 17 22 11"/>
-            </svg>
-            <span>Parcela menor</span>
-          </div>
-          <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 2l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 14.2l-4.78 2.51.91-5.32L4.27 7.62l5.34-.78L12 2z"/>
-            </svg>
-            <span>Lance livre</span>
-          </div>
-          <div class="benefit-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
-            <span>FGTS aceito</span>
-          </div>
+          <h3>Proximo passo</h3>
+          <p>Um de nossos especialistas entrara em contato para apresentar todas as condicoes, taxas e vantagens do consorcio.</p>
         </div>
 
         <div class="disclaimer">
@@ -354,54 +287,23 @@
             <line x1="12" y1="8" x2="12" y2="12"/>
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <p><strong>Observação:</strong> Valores sujeitos a taxas administrativas vigentes. Apenas simulação, para valor real consultar taxas vigentes. Cálculo baseado nas taxas públicas do <strong>BB Consórcio</strong> (Banco do Brasil).</p>
+          <p>Valores sujeitos a taxas administrativas vigentes. Simulacao meramente ilustrativa.</p>
         </div>
 
         <div class="result-actions">
-          <button type="button" class="btn btn-primary btn-large" id="downloadPdfBtn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+          <a href="https://wa.me/5534999238855" target="_blank" rel="noopener" class="btn btn-primary btn-large btn-whatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 00-8.7 14.9L2 22l5.2-1.3A10 10 0 1012 2zm0 18.3c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3a8.3 8.3 0 1114.9-5 8.3 8.3 0 01-8.3 8.3z"/>
             </svg>
-            Baixar PDF da simulação
-          </button>
+            Falar com especialista
+          </a>
           <button type="button" class="btn btn-secondary btn-large" id="restartBtn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="23 4 23 10 17 10"/>
               <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
             </svg>
-            Nova simulação
+            Nova simulacao
           </button>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-head">
-            <span class="eyebrow eyebrow-yellow">Fale conosco</span>
-            <h3>Tire suas dúvidas com um especialista</h3>
-          </div>
-          <div class="contact-links">
-            <a href="https://wa.me/5534999238855" target="_blank" rel="noopener" class="contact-link contact-whats">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 00-8.7 14.9L2 22l5.2-1.3A10 10 0 1012 2zm0 18.3c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3a8.3 8.3 0 1114.9-5 8.3 8.3 0 01-8.3 8.3z"/>
-              </svg>
-              <div>
-                <strong>WhatsApp</strong>
-                <span>(34) 99923-8855</span>
-              </div>
-            </a>
-            <a href="https://instagram.com/bsfinances" target="_blank" rel="noopener" class="contact-link contact-insta">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-              <div>
-                <strong>Instagram</strong>
-                <span>@bsfinances</span>
-              </div>
-            </a>
-          </div>
         </div>
       </div>
 

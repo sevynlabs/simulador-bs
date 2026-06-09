@@ -429,23 +429,13 @@ function renderResults() {
   const r = state.results;
   $('#resultName').textContent = state.lead.name.split(' ')[0];
 
-  $('#economyValue').textContent = formatBRL(r.economy);
-  $('#economyPercent').textContent = formatPercent(r.economyPercent, 1);
+  // Resumo
+  $('#resultCategory').textContent = r.category;
+  $('#resultCredit').textContent = formatBRL(r.principal);
+  $('#resultMonths').textContent = `${r.months}x`;
 
-  // Financiamento
-  $('#finPrincipal').textContent = formatBRL(r.principal);
-  $('#finParcela').textContent = `${formatBRL(r.finParcela)} / mês`;
-  $('#finJuros').textContent = formatPercent(r.financingRateAnnual, 2);
-  $('#finTotalJuros').textContent = `+ ${formatBRL(r.finJurosTotal)}`;
-  $('#finTotal').textContent = formatBRL(r.finTotal);
-
-  // Consórcio
-  $('#conPrincipal').textContent = formatBRL(r.principal);
-  $('#conParcela').textContent = `${formatBRL(r.conParcela)} / mês`;
-  $('#conTaxaAdm').textContent = formatPercent(r.adminRate, 2);
-  $('#conFundoReserva').textContent = formatPercent(r.reserveFund, 2);
-  $('#conTotalAdm').textContent = `+ ${formatBRL(r.conAdmTotal)}`;
-  $('#conTotal').textContent = formatBRL(r.conTotal);
+  // Parcela do consórcio (único valor exibido)
+  $('#conParcela').textContent = formatBRL(r.conParcela);
 }
 
 // ----- Navigation buttons -----
